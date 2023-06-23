@@ -4,12 +4,14 @@
   "scripts": {
     "build": "slidev build",
     "dev": "slidev --open",
-    "export": "slidev export"
+    "export": "slidev export",
+    "publish": "gh-pages -d dist"
   },
   "dependencies": {
     "@slidev/cli": "^0.42.5",
     "@slidev/theme-default": "latest",
-    "@slidev/theme-seriph": "latest"
+    "@slidev/theme-seriph": "latest",
+    "gh-pages": "^5.0.0"
   },
   "packageManager": "yarn@3.6.0",
   "license": "MIT"
