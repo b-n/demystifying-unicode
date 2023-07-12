@@ -5,7 +5,7 @@ class: text-center
 highlighter: shiki
 lineNumbers: true
 info: |
-  ## A Ruby/Rust talk about how unicode works and is used by programs.
+  ## Unicode, Rust, quirks, and way too much detail.
 drawings:
   persist: false
 transition: slide-left
