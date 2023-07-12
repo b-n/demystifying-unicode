@@ -1,4 +1,12 @@
+---
+layout: cover
+---
+
 # History
+
+---
+
+## A bit (🥁鈸) of fundamentals
 
 > Computers represent information as 1's and 0's
 > - Literally everyone, since forever
@@ -62,7 +70,7 @@ DIN 91379: https://github.com/String-Latin/DIN-91379-Characters-and-Sequences
 
 ---
 
-# Competing standards
+## Competing standards
 
 XKCD comic 927
 
