@@ -34,7 +34,7 @@ hideInToc: true
 
 # Table of contents
 
-<Toc></Toc>
+<Toc maxDepth="1"></Toc>
 
 ---
 src: ./pages/01-history.md
