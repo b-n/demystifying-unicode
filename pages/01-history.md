@@ -100,6 +100,8 @@ But first...
 ANSI Characters aren't actually a thing. When people use this term, they are refering to the windows code pages.
 
 Quiz: How many bits is an ascii character?
+
+IBM437: https://www.compart.com/en/unicode/charsets/IBM437
 -->
 
 ---
