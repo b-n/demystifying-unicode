@@ -1,0 +1,16 @@
+[package]
+name = "unicodes"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "super_secret"
+path = "src/super_secret.rs"
+
+[[bin]]
+name = "scratch"
+path = "src/scratch.rs"
+
+[dependencies]

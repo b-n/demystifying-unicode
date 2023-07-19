@@ -56,3 +56,9 @@ src: ./pages/04-quirks.md
 hide: false
 ---
 
+---
+layout: cover
+hideInToc: true
+---
+
+# THE END
