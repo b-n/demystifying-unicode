@@ -115,6 +115,3 @@ layout: center
 ---
 
 <img src="/no_chars_yes_glyphs.jpg" alt="Drake no: characters. Drake yes: glyphs" />
-
----
-
