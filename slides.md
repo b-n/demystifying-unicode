@@ -5,7 +5,7 @@ class: text-center
 highlighter: shiki
 lineNumbers: true
 info: |
-  ## A Ruby/Rust talk about how unicode works and is used by programs.
+  ## Unicode, Rust, quirks, and way too much detail.
 drawings:
   persist: false
 transition: slide-left
@@ -34,7 +34,7 @@ hideInToc: true
 
 # Table of contents
 
-<Toc></Toc>
+<Toc maxDepth="1"></Toc>
 
 ---
 src: ./pages/01-history.md
@@ -56,3 +56,9 @@ src: ./pages/04-quirks.md
 hide: false
 ---
 
+---
+layout: cover
+hideInToc: true
+---
+
+# THE END
