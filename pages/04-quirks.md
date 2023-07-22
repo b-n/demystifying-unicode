@@ -6,7 +6,7 @@ layout: cover
 
 ---
 
-## Capitalization
+## Capitalization (AKA Casemapping and Casefolding)
 
 All ASCII letters just so happen to be lossless when transitioning between upper and lower case versions. But this doesn't apply to all languages and characters.
 
@@ -108,7 +108,7 @@ fn main() {
     //let codepoints: Vec<u32> = encoded.chars().map(|c| c.into()).collect();
     //println!("{:X?}", codepoints);
 
-    //let offset: u32 = u32::from_str_radix("E0000", 16).unwrap();
+    //let offset: u32 = 0xE0000;
 
     //let decoded: String = encoded
     //    .chars()
