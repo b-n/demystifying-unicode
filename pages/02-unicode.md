@@ -20,7 +20,6 @@ Unicode was set up as a universal list of glyphs that were going to be standard 
 
 ## New Terminology
 
-
 - Unicode codepoint: The unique identifier for a particular glyph (which could also be combining glyph etc)
 - Glyphemes: Something that we as a people would consider an individual charcter. This could be one or many codepoints (in the example of combining codepoionts - grave, acute, etc)
 
@@ -50,3 +49,17 @@ How does UTF-8 work?
 - It is unified way of interpreting an array of bytes in order to display them on a screen
 - Between 1 and 4 bytes. In some cases UTF-16 is more efficient.
 - By pure (The english people got there first) luck, UTF-8 is more efficient on the web due to how the standards work for many transfer protocols. e.g. many things only support ASCII chars, and/or are wrapped by an not insiginificant amount of ASCII, which makes UTF-8 more efficient since these characters only take up one byte, instead of 2 in UTF-16
+
+---
+layout: center
+---
+
+## Summary
+
+Unicode standard is a dictionary of glyphs
+
+Encoding is a concept to help humans interpret bytes as glyphs
+
+UTF-8 and UTF-16 are encodings of the Unicode Standard
+
+UTF-8 is most cases is more memory efficient due to the mass amounts of ASCII usage
