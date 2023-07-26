@@ -16,14 +16,6 @@ footer {
   font-size: 70%;
 }
 
-.no-backtick code::before {
-  content: ''
-}
-
-.no-backtick code::after {
-  content: ''
-}
-
 .codepoint {
   position: absolute;
   margin-top: 1rem;
@@ -42,4 +34,13 @@ footer {
 .codepoint .code {
   font-size: 2rem;
   text-align: center;
+}
+
+.binary {
+  font-family: "PT Mono",ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  background: var(--prism-background);
+  font-size: 0.9em;
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+  font-weight: 300;
 }

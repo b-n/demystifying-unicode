@@ -99,7 +99,6 @@ layout: two-cols
 Glyphemes - 1 to many codepoints that are represented to the user as a single character
 --> 
 
-
 ---
 layout: center
 ---
@@ -116,6 +115,12 @@ layout: center
 `Unicode` - "The Standard" <sup>defines codepoints</sup>
 
 `UTF-8/UTF-16/UTF-32` - Encodings
+
+---
+layout: center
+---
+
+A quick word on encoding
 
 ---
 
@@ -206,28 +211,6 @@ The encoding standard is the encoding standard. If people are implementing UTF-8
 -->
 
 ---
-
-## A world before encoding/before the web?
-
-Be grug developer:
-
-- I use IBM 437 because I'm writing DOS applications
-- Everyone else must use IBM 437, because they all speak english and like borders right?
-- Write once, run only on my machine
-
-Hypothesis: When the world started going online...
-
-Dos world: IBM437
-
-Windows world: ISO-8859-1
-
-<footer>
-
-**🌶 Facts**: HTTP 1.1 used to use `ISO-8859-1` as the default charset 🤯
-
-</footer>
-
----
 layout: center
 ---
 
@@ -294,6 +277,8 @@ We need at least 17 bits of room to encode U+1F63B
 
 ∴ We need 4 bytes!
 
+`1111 0xxx` `10xx xxxx` `10xx xxxx` `10xx xxxx`
+
 </div>
 
 <!--
@@ -306,94 +291,50 @@ Take a codepoint, and split it into UTF-8
 
 😻 = U+1F63B = Smiling cat face with heart-shaped eyes
 
-1F63B =
+0x1F63B = `0001 1111 0110 0011 1011`
 
-<div class="absolute top-29 left-31">
-
-`0001 1111 0110 0011 1011`
-
+<div v-click class="absolute top-40 left-14">
+  <span>0x1F63B =&nbsp;</span>
+  <span class="binary color-red">&nbsp;00</span>
+  <span class="binary color-blue">01 1111</span>
+  <span class="binary color-green">&nbsp;0110 00</span>
+  <span class="binary color-yellow">11 1011</span>
 </div>
 
-<div v-click class="absolute parts top-29 left-15">
-  <div
-    class="absolute part part-1 no-backtick anim"
-    :initial="{ x: 73, y: 0 }"
-    :enter="{ x: 0, y: 35 }">
-
-  `00`
-
-  </div>
-
-  <div
-    class="absolute part part-2 no-backtick anim"
-    :initial="{ x: 92, y: 0 }"
-    :enter="{ x: 0, y: 70 }">
-
-  `01 1111`
-
-  </div>
-
-
-  <div
-    class="absolute part part-3 no-backtick anim"
-    :initial="{ x: 168, y: 0 }"
-    :enter="{ x: 0, y: 105 }">
-
-  `0110 00`
-
-  </div>
-
-  <div
-    class="absolute part part-4 no-backtick anim"
-    :initial="{ x: 235, y: 0 }"
-    :enter="{ x: 0, y: 140 }">
-
-  `11 1011`
-
-  </div>
+<div v-click class="absolute parts top-40 left-14">
+  <div class="binary color-red absolute part part-1 anim">00</div>
+  <div class="binary color-blue absolute part part-2 anim">01 1111</div>
+  <div class="binary color-green absolute part part-3 no-backtick anim">0110 00</div>
+  <div class="binary color-yellow absolute part part-4 no-backtick anim">11 1011</div>
 </div>
 
-<div v-click class="absolute top-39 left-35">
+<div v-click class="absolute top-49 left-31">
+  <span class="binary">| 1111 0000 = 1111 00<span class="color-red">00</span>&nbsp;</span>
 
-= `xxxx x000`
+  <span class="binary">| 1000 0000 = 10<span class="color-blue">01 1111</span>&nbsp;</span>
 
-= `1001 1111`
+  <span class="binary">| 1000 0000 = 10<span class="color-green">01 1000</span>&nbsp;</span>
 
-= `1001 1000`
-
-= `1011 1011`
-
+  <span class="binary">| 1000 0000 = 10<span class="color-yellow">11 1011</span>&nbsp;</span>
 </div>
 
-<div v-click class="absolute top-39 left-67">
+<div v-click class="absolute top-49 left-86">
+  <span class="binary">&nbsp;= 0xF0</span>
 
-= ` 0`
+  <span class="binary">&nbsp;= 0x9F</span>
 
-= `9F`
+  <span class="binary">&nbsp;= 0x98</span>
 
-= `98`
-
-= `BB`
-
+  <span class="binary">&nbsp;= 0xBB</span>
 </div>
 
-<div class="absolute top-80 left-15">
+<div class="absolute top-90 left-15">
 
 <v-click>
 
 <hr />
 
-UTF-8 4 Byte size marker = `1111 0xxx`
-
-∴ `1111 0000 | 0000 0000` = `1111 0000` = `F0`
-
-</v-click>
-
-<v-click>
-
-<hr />
-
-Thus! U+1F63B = `\xF0\x9F\x97\xBB`
+Thus! U+1F63B = `\xF0\x9F\x97\xBB` in UTF-8
 
 </v-click>
 
@@ -401,26 +342,26 @@ Thus! U+1F63B = `\xF0\x9F\x97\xBB`
 
 <style>
 .part {
-  width: 4em;
+  width: 4.5em;
   top: 0em;
 }
 
 .parts {
-  opacity: 1 !important;
+  opacity: 1;
 }
 
-.part-1 { left: 4.15em; }
-.part-2 { left: 5.26em; }
-.part-3 { left: 9.55em; }
-.part-4 { left: 13.37em; }
+.part-1 { left: 5.90em; width: 1.8em; }
+.part-2 { left: 7.10em; }
+.part-3 { left: 11.9em; }
+.part-4 { left: 16.1em; }
 
 .slidev-vclick-current,.slidev-vclick-prior {
   .part { left: 0em; }
 
-  .part-1 { top: 2.375em; left: 2.7em; }
-  .part-2 { top: 4.750em; }
-  .part-3 { top: 6.875em; }
-  .part-4 { top: 9.125em; }
+  .part-1 { top: 2.3em; left: 2.7em; }
+  .part-2 { top: 5.0em; }
+  .part-3 { top: 7.5em; }
+  .part-4 { top: 10.1em; }
 }
 
 .anim {
