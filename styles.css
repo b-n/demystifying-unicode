@@ -2,11 +2,44 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.5rem;
 }
 
+hr {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
 footer {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 2em;
+  padding: 0em 2em;
   font-size: 70%;
+}
+
+.no-backtick code::before {
+  content: ''
+}
+
+.no-backtick code::after {
+  content: ''
+}
+
+.codepoint {
+  position: absolute;
+  margin-top: 1rem;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  bottom: 8em;
+}
+
+.codepoint .glyph {
+  font-size: 5rem; 
+}
+
+.codepoint .code {
+  font-size: 2rem;
+  text-align: center;
 }
