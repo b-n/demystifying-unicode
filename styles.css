@@ -2,11 +2,45 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.5rem;
 }
 
+hr {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
 footer {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 2em;
+  padding: 0em 2em;
   font-size: 70%;
+}
+
+.codepoint {
+  position: absolute;
+  margin-top: 1rem;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  bottom: 8em;
+}
+
+.codepoint .glyph {
+  font-size: 5rem; 
+}
+
+.codepoint .code {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.binary {
+  font-family: "PT Mono",ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  background: var(--prism-background);
+  font-size: 0.9em;
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+  font-weight: 300;
 }
