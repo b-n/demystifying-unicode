@@ -221,8 +221,9 @@ UTF-21 exists - but it's a toy encoding hobby project<br />
 </footer>
 
 <!--
-A UTF-8 encoded string on my machine spits out an array of bytes.
-To your machine, it's just an array of bytes.
+A UTF-8 encoded string on my machine spits out an array of bytes. To your machine, it's just an array of bytes.
+
+UTF-8/16/32 & BOM FAQs: https://unicode.org/faq/utf_bom.html
 
 Content-Encoding header on HTTP requests
 
