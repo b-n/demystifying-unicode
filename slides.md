@@ -62,3 +62,9 @@ hideInToc: true
 ---
 
 # THE END
+
+---
+src: ./pages/05-appendices.md
+hide: true
+---
+

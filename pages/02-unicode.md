@@ -10,11 +10,10 @@ layout: cover
 
 <v-clicks>
 
-1. Reliance on code page/charmap defaults per system
-1. Code page duplication/lack of standardisation
-1. Concept of "Encoding" was lacking
-1. OEMs just did what they wanted
-1. Display more than one code page at a time?
+1. Codepages/charmaps? System dependant
+1. Unique characters? Duplication everywhere
+1. Display more than one codepage/charmap at a time? ␎␏␎␏␎␏␎␏
+1. Text from outside of Europe? :ha:
 
 </v-clicks>
 
@@ -25,6 +24,22 @@ TODO: Illustrate with an example:
 - Get garbled nonsense
 - 👍 
 -->
+
+---
+layout: center
+---
+
+<div class="absolute top-0 left-0 the-internet flex justify-center items-center text-30">
+  <p class="text-shadow-xl color-white text-shadow-color-red">The Internet</p>
+</div>
+
+<style>
+.the-internet {
+  background-image: url("/the_internet.jpg");
+  width: 100%;
+  height: 100%
+}
+</style>
 
 ---
 layout: center
@@ -62,7 +77,7 @@ Ref: https://www.unicode.org/versions/Unicode15.0.0/ch01.pdf
 | - | - | - |
 | Glyph | ‽ | How it actually looks, defined by the font |
 | Codepoint | U+203D | Unique identifier for this character |
-| Character | Interrobang | Description of the character | 
+| Character | Interrobang | Description of the codepoint | 
 | Block | General Punctuation, U+2000 - U+206F | The range of codepoints for a specific purpose |
 | Plane | Basic Multilingual Plane, U+0000 - U+FFFF | The wide group of codepoints |
 
@@ -76,6 +91,12 @@ Ref: Characters and Glyphs https://www.unicode.org/versions/Unicode15.0.0/ch01.p
 Glyphs are what are drawn to the screen, generally unicode interpreted by a font for example
 Character is still ambiguous, but in unicode it's the description of the codepoint
 -->
+
+---
+layout: center
+---
+
+<img src="/no_chars_yes_glyphs.jpg" alt="Drake no: characters. Drake yes: glyphs" />
 
 ---
 layout: two-cols
@@ -106,55 +127,38 @@ layout: center
 ## What is the difference between
 ## `Unicode`
 ## and
-## `UTF-8/UTF-16/UTF-32?`
+## `UTF-8`
 
 ---
 layout: center
 ---
 
-`Unicode` - "The Standard" <sup>defines codepoints</sup>
+<div class="text-7">
 
-`UTF-8/UTF-16/UTF-32` - Encodings
+`Unicode` - "The Standard"
 
----
-layout: center
----
+`UTF-8` - Encoding
 
-A quick word on encoding
+</div>
+
+<!--
+There is also UTF-16 and UTF-32
+-->
 
 ---
 
 ## Encoding
 
-Current Unicode total code space size: 21bits, 1048576 characters.
-
-Code space: U+000000 - U+10FFFF
-
-But...
-
-<v-click>
-
-> There are many ways to encode/skin a unicode/cat.
-
-</v-click>
-
-<v-click>
-
-**Important:**
-
-</v-click>
-
 <v-clicks>
 
-- ASCII standardized 0x00 - 0x7F
-  ```
-  ␀␁␂␃␄␅␆␇␈␉␊␋␌␍␎␏␐␑␒␓␔␕␖␗␘␙␚␛␜␝␞␟
-  ␠!"#$%&'()*+,-./0123456789:;<=>?
-  @ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_
-  `abcdefghijklmnopqrstuvwxyz{|}~␡
-  ```
-- Many code pages were using ASCII too
-- <small>It's really important to 🤝 on encoding - even to this day.</small>
+**DIN 91379**: 925 characters
+
+At least 10 bits - (Names/Data exchange in Europe)
+
+Unicode:
+- Supports 1048576 Characters
+- Code space: U+000000 - U+10FFFF
+- Which requires at least 21 bits
 
 </v-clicks>
 
@@ -168,18 +172,45 @@ Fun fact: Unicode <2.0 code space was 16-bit wide.
 layout: center
 ---
 
-## Unicode has 5 Encodings!
+<div class="flex flex-col">
 
-- UTF-8
-- UTF-16LE
-- UTF-16BE *
-- UTF-32LE
-- UTF-32BE *
+<img src="/standards.png" class="center"/>
+
+<p class="text-3">
+Alt: Fortunately, the charging one has been solved now that we've all standardized on mini-USB. Or is it micro-USB? Shit.
+</p>
+
+</div>
+
+<footer>
+
+Source: https://xkcd.com/927/
+
+</footer>
+
+---
+
+## Woo options!
+
+😻 = U+1F63B = Smiling cat face with heart-shaped eyes
+
+<v-click>
+
+| | |
+| - | - |
+| UTF-8 | `0xF0 0x9F 0x98 0xBB` |
+| UTF-16BE* | `0xD83D 0xDE3B` |
+| UTF-16LE | `0x3DD8 0x3BDE` |
+| UTF-32BE* | `0x0001F63B` |
+| UTF-32LE | `0x3BF60100` |
+
+\* BE encodings are the default if no BOM `\xFEFF`
+
+</v-click>
 
 <footer>
 
 UTF-21 exists - but it's a toy encoding hobby project<br />
-\* denotes the encodings which are default if not explicit LE/BE defined
 
 </footer>
 
@@ -190,24 +221,6 @@ To your machine, it's just an array of bytes.
 Content-Encoding header on HTTP requests
 
 UTF-21: https://evanhahn.com/utf-21/
--->
-
----
-layout: center
----
-
-## Important
-
-UTF-[8/16/32] __should__ always be the same everywhere
-
-UTF-8 == UTF-8
-
-UTF-16 == UTF-16
-
-UTF-32 == UTF-32
-
-<!--
-The encoding standard is the encoding standard. If people are implementing UTF-8 in different ways (e.g. reverse byte order), then they are not using UTF-8, they have their own special thing.
 -->
 
 ---
@@ -379,8 +392,6 @@ layout: center
 <v-clicks>
 
 - Unicode standard is a dictionary of codepoints and their character descriptions
-- Encoding is a concept to help humans interpret bytes as painted glyphs
-- UTF-8/16/32 are encodings defined by the Unicode Standard
-- UTF-8 is most cases is more memory efficient due to the mass amounts of Latin + ASCII usage
+- UTF-8 is an Encoding. Encodings help humans interpret bytes as painted glyphs
 
 </v-clicks>

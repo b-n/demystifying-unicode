@@ -8,8 +8,12 @@ layout: cover
 
 ## A bit (🥁鈸) of fundamentals
 
+<div class="mt-5">
+
 > Computers represent information as 1's and 0's
 > - Literally everyone, since forever
+
+</div>
 
 Multiple bits can be put together to make different structures.
 
@@ -22,8 +26,12 @@ Multiple bits can be put together to make different structures.
 
 ## Abstraction
 
+<div class="mt-5">
+
 > Let's make an abstraction so we can understand things better
 > - Literally every developer, since forever
+
+</div>
 
 `C` originally abstracted things a little further:
 
@@ -31,10 +39,8 @@ Multiple bits can be put together to make different structures.
 
 - `bool` is a 1 bit
 - `char` is a 8 bits
-- `int` is ambiguous, however they solved that with:
-  - `uint8_t` - unsigned 8bit integer
-  - `uint32_t` - unsigned 32bit integer
-  - `int8_t` - signed 8bit integer, 2's compliment
+- `int` is ambiguous, we gained:
+  - `uint8_t`, `uint32_t`, `int8_t`
   - ... etc, etc.
 - `long` also ambiguous, but >= `int`
 
@@ -50,67 +56,99 @@ And what really are characters?
 
 ---
 
-## Characters
+## Abstract? ABSTRACT!
 
 Quiz time - what does this say:
 
 ```
-01101000 01100101 01101100 01101100 01101111 00100000
-01110111 01101111 01110010 01101100 01100100
+01001000 01100101 01101100 01101100 01101111 00100000
+01010111 01101111 01110010 01101100 01100100 00100001
 ```
 
 <v-click>
 
-The knowledge we share with computers: `00100000` = `32` = ` `
+`00100000` = `0x20` = ` `
+<span class="pl-15">
+`00100001` = `0x21` = `!`
+</span>
 
 </v-click>
 
 <v-click>
 
-But there are more than 255 characters in different scripts. DIN 91379 includes:
-| | |
-| --- | --- |
-| Base Latin Letters: 649 | enl: 42 |
-| Combinging Diacritics: 19 | bnlreq: 17 |
-| Greek Letters: 68 | bnl: 59 |
-| Cyrillic Letters: 61 | bnlopt: 8 |
-| | bnlnot: 2 |
+<hr />
+
+```
+0100 1000  =  0x48  =  'H'
+0110 0101  =  0x65  =  'e'
+0110 1100  =  0x6c  =  'l'
+0110 1100  =  0x6c  =  'l'
+0110 1111  =  0x6f  =  'o'
+0010 0000  =  0x20  =  ' '
+0101 0111  =  0x57  =  'W'
+0110 1111  =  0x6f  =  'o'
+0111 0010  =  0x72  =  'r'
+0110 1100  =  0x6c  =  'l'
+0110 0100  =  0x64  =  'd'
+0010 0001  =  0x21  =  '!'
+```
 
 </v-click>
 
 <!--
 When I think of a "character" I think of "Something a human can read". This text is made up of characters because we understand what each of the letters mean. We share that knowledge.
-
-DIN 91379: https://github.com/String-Latin/DIN-91379-Characters-and-Sequences
 -->
+
+---
+layout: center
+---
+
+<div class="flex flex-col">
+
+<img src="/standards.png" class="center"/>
+
+<p class="text-3">
+Alt: Fortunately, the charging one has been solved now that we've all standardized on mini-USB. Or is it micro-USB? Shit.
+</p>
+
+</div>
+
+<footer>
+
+Source: https://xkcd.com/927/
+
+</footer>
 
 ---
 
 ## Competing standards
 
-XKCD comic 927
-
-8 bits isn't going to be enough.
-
 - ~~ANSI (American National Standards Institue) Characters~~ Windows code pages, Code Page 437
-- ASCII (American Standard Code for Information Interchange) Characters (QQ)
+- ASCII (American Standard Code for Information Interchange) Characters
 
-IBM decided that drawing UI's was more important than people being able to write in their language 
+<div v-click class="mt-10">
 
 ```
-┏━━━━━━━━━━━━━━━━━━┫ Prompt ┣━━━━━━━━━━━━━━━━┓
-┃                                            ┃ 
-┃ Do you want your langauge to be supported? ┃
-┃                                            ┃ 
-┗━━━━━━━━━━━━━━━━━━┫ No ┣━┫ >Nah not even< ┣━┛
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ Cool "App" 3000 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                                                                                     ┃ 
+┃                                                                                     ┃ 
+┃                                                                                     ┃ 
+┃                                                                                     ┃ 
+┃                    ┏━━━━━━━━━━━━━━━━━━┫ Prompt ┣━━━━━━━━━━━━━━━━┓                   ┃
+┃                    ┃                                            ┃                   ┃ 
+┃                    ┃ DO YOU WANT YOUR LANGAUGE TO BE SUPPORTED? ┃                   ┃
+┃                    ┃                                            ┃                   ┃
+┃                    ┗━━━━━━━━━━━━━━━━━━┫ No ┣━┫ >Nah not even< ┣━┛                   ┃
+┃                                                                                     ┃ 
+┃                                                                                     ┃ 
+┃                                                                                     ┃ 
+┃                                                                                     ┃ 
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 ```
 
-<br />
+🙇 IBM - You helped us draw instead of supporting languages.
 
-> Unicode has entered the chat
-
-<br />
-But first...
+</div>
 
 <!--
 ANSI Characters aren't actually a thing. When people use this term, they are refering to the windows code pages.
@@ -124,56 +162,77 @@ IBM437: https://www.compart.com/en/unicode/charsets/IBM437
 
 ## About ol ASCII
 
+<div class="flex flex-row flex-items-stretch">
+<div class="text-center">
+    
+**IBM 437**
+
+<img class="w-120" src="/Codepage-437.png" alt="An example of the characters on the commonly used IBM437 codepage"/>
+
+</div>
+<div class="text-center">
+
+**IBM 737**
+
+<img class="w-120 mt-5" src="/Codepage-737.png" alt="An example of the characters on IBM737 which shows greek characters above the 0x7F range"/>
+
+</div>
+</div>
+
+<v-click>
+
+<div class="absolute border-5 top-35 left-12 right-12 bottom-76 border-red"></div>
+
+</v-click>
+
 <v-clicks>
 
 - ASCII standardized 0x00..0x7F
   ```
-  ␀␁␂␃␄␅␆␇␈␉␊␋␌␍␎␏
-  ␐␑␒␓␔␕␖␗␘␙␚␛␜␝␞␟
-  ␠!"#$%&'()*+,-./
-  0123456789:;<=>?
-  @ABCDEFGHIJKLMNO
-  PQRSTUVWXYZ[\]^_
-  `abcdefghijklmno
-  pqrstuvwxyz{|}~␡
+  ␀␁␂␃␄␅␆␇␈␉␊␋␌␍␎␏␐␑␒␓␔␕␖␗␘␙␚␛␜␝␞␟
+  ␠!"#$%&'()*+,-./0123456789:;<=>?
+  @ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_
+  `abcdefghijklmnopqrstuvwxyz{|}~␡
   ```
-- 0x00..0x7F was common between many code pages
-- Which code page? Which `encoding` of bits makes what char?
+- ∴ `0x00..0x7F` was common between many code pages
 
 </v-clicks>
 
 ---
 
-## A world before encoding/before the web?
+## How many characters is enough charcters?
 
-Be grug developer:
+**DIN 91379**
 
-- I use IBM 437 because I'm writing DOS applications
-- Everyone else must use IBM 437, because they all speak english and like borders right?
-- Write once, run only on my machine
+| | |
+| --- | --- |
+| Base Latin Letters: 649 | enl: 42 |
+| Combinging Diacritics: 19 | bnlreq: 17 |
+| Greek Letters: 68 | bnl: 59 |
+| Cyrillic Letters: 61 | bnlopt: 8 |
+| | bnlnot: 2 |
 
-Hypothesis: When the world started going online...
+<v-clicks>
 
-Dos world: IBM437
+**8 bits isn't going to be enough**
 
-Windows world: ISO-8859-1
+</v-clicks>
 
-<footer>
-
-**🌶 Facts**: HTTP 1.1 used to use `ISO-8859-1` as the default charset 🤯
-
-</footer>
-
----
-layout: quote
----
-
-The term charactor is ambiguous.
-
-`char` isn't a character, it's just a `uint8_t` with a fancy name.
+<!--
+DIN 91379: https://github.com/String-Latin/DIN-91379-Characters-and-Sequences
+-->
 
 ---
 layout: center
 ---
 
-<img src="/no_chars_yes_glyphs.jpg" alt="Drake no: characters. Drake yes: glyphs" />
+## Summary:
+
+<v-clicks>
+
+- The term charactor is ambiguous.
+- `char` isn't a character, it's just a `uint8_t` with a fancy name
+- ASCII is "characters" `0x00..0x7F` - **7 BITS**
+- We need a whole lot more bits if we want more than just English
+
+</v-clicks>
