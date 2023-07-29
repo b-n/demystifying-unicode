@@ -15,12 +15,24 @@ layout: cover
 
 </div>
 
+<v-clicks>
+
 Multiple bits can be put together to make different structures.
+
+Those structures are inherently computer orientated - not human orientated:
 
 - 8 bits makes a byte
 - 4/8 bytes makes a word on 32/64 bit architectures respectively
+  
+  <sup>(last you'll heard of "words" in this presentation)</sup>
+
+</v-clicks>
+
+<!--
 
 👆 Although unimportant for this talk, these things are the main language of a computer, bits, bytes, words. Compilers compile our code, so we can make more __human__ structures. Often the compilers optimise our code for thigns the computer understands.
+
+-->
 
 ---
 
@@ -33,15 +45,15 @@ Multiple bits can be put together to make different structures.
 
 </div>
 
-`C` originally abstracted things a little further:
+`C` abstracted things a little further:
 
 <v-clicks>
 
 - `bool` is a 1 bit
 - `char` is a 8 bits
-- `int` is ambiguous, we gained:
-  - `uint8_t`, `uint32_t`, `int8_t`
-  - ... etc, etc.
+- `int` is ambiguous
+  
+  More common "nowadays": `uint8_t`, `uint32_t`, `int8_t`, etc
 - `long` also ambiguous, but >= `int`
 
 </v-clicks>
@@ -119,6 +131,12 @@ Source: https://xkcd.com/927/
 
 </footer>
 
+<!--
+
+When we open up to interpretation as with a certain bit sequence meaning "H", then we open ourselves to standards. Mo standards, mo problems.
+
+-->
+
 ---
 
 ## Competing standards
@@ -160,7 +178,7 @@ IBM437: https://www.compart.com/en/unicode/charsets/IBM437
 
 --- 
 
-## About ol ASCII
+## About ol ASCII - QQ
 
 <div class="flex flex-row flex-items-stretch">
 <div class="text-center">
@@ -202,7 +220,11 @@ IBM437: https://www.compart.com/en/unicode/charsets/IBM437
 
 ## How many characters is enough charcters?
 
-**DIN 91379**
+<p class="pt-5">
+
+**DIN 91379** - Characters and character sequences for processing names and data exchange in europe"
+
+</p>
 
 | | |
 | --- | --- |
@@ -214,13 +236,15 @@ IBM437: https://www.compart.com/en/unicode/charsets/IBM437
 
 <v-clicks>
 
-**8 bits isn't going to be enough**
+**💣 8 bits isn't going to be enough 💣**
 
 </v-clicks>
 
-<!--
+<footer>
+
 DIN 91379: https://github.com/String-Latin/DIN-91379-Characters-and-Sequences
--->
+
+</footer>
 
 ---
 layout: center
@@ -230,9 +254,9 @@ layout: center
 
 <v-clicks>
 
-- The term charactor is ambiguous.
+- Computers know bits - `1`s and `0`s
+- Bits are not human structures - so we abstract
 - `char` isn't a character, it's just a `uint8_t` with a fancy name
-- ASCII is "characters" `0x00..0x7F` - **7 BITS**
-- We need a whole lot more bits if we want more than just English
+- We need a whole lot more bits if we more than just names and dates in europe
 
 </v-clicks>

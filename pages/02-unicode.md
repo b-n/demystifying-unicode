@@ -96,6 +96,12 @@ Character is still ambiguous, but in unicode it's the description of the codepoi
 layout: center
 ---
 
+<img src="/glyph-codepoint-character.jpg" alt="Triple spiderman meme, glyph, codepoint, character pointing at each other" />
+
+---
+layout: center
+---
+
 <img src="/no_chars_yes_glyphs.jpg" alt="Drake no: characters. Drake yes: glyphs" />
 
 ---
@@ -243,12 +249,12 @@ Key points:
 
 <hr />
 
-| First code point | Last code point | Byte 1 | Byte 2 | Byte 3 | Byte 4 | Bit Capacity |
+| Code point range | Byte 1 | Byte 2 | Byte 3 | Byte 4 | Bit Capacity | Code points |
 | - | - | - | - | - | - | - |
-| U+0000 | U+007F | `0xxxxxxx` | | | | 7 |
-| U+0080 | U+07FF | `110xxxxx` | `10xxxxxx` | | | 11 |
-| U+0800 | U+FFFF | `1110xxxx` | `10xxxxxx` | `10xxxxxx` | | 16 |
-| U+10000 | U+10FFFF | `11110xxx` | `10xxxxxx` | `10xxxxxx` | `10xxxxxx` | 21 |
+| `0x000000..0x00007F` | `0xxxxxxx` | | | | 7 | 128 |
+| `0x000080..0x0007FF` | `110xxxxx` | `10xxxxxx` | | | 11 | 1920 |
+| `0x000800..0x00FFFF` | `1110xxxx` | `10xxxxxx` | `10xxxxxx` | | 16 | 63488 |
+| `0x010000..0x10FFFF` | `11110xxx` | `10xxxxxx` | `10xxxxxx` | `10xxxxxx` | 21 | 1mil+ |
 
 </v-click>
 
@@ -391,7 +397,9 @@ layout: center
 
 <v-clicks>
 
-- Unicode standard is a dictionary of codepoints and their character descriptions
-- UTF-8 is an Encoding. Encodings help humans interpret bytes as painted glyphs
+- Unicode is a standard. It defeines a dictionary of `codepoints` to their character descriptions
+- UTF-8 is an Encoding - defined by the Unicode Standard.
+- Encodings help humans interpret bytes as painted glyphs
+- UTF-8 is by far the most common standard due to it's memory efficiency (e.g. variable space) 
 
 </v-clicks>
