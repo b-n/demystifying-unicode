@@ -5,21 +5,9 @@ layout: cover
 # Unicode in Rust
 
 <!--
-We now know what UTF-8 is, and what Unicode is, how is it used in rust?
 
-- How do we represent strings in rust?
-  - str = primitive
-  - str = string slice
-  - string slice = vector of bytes
-- Creating strings
-  - str is valid UTF-8 only
-  - Different ways to create str's
-    - &'static str
-    - String::from_utf8(bytes);
-    - b"" (and then conversion)
-    - array of std::char
-  - UTF-8Errors
-  - Conventially UTF-8 instead of Gauranteed
+We now know what Unicode and UTF-8 are, how is it used in rust?
+
 - Limits of UTF-8 default
   - Reading binary from disk
   - People not following standards (binary in json without conversion) 
@@ -48,13 +36,21 @@ Incorrect: `String`, `&str`
 
 </v-click>
 
-<v-click>
+<div v-click class="mt-5">
 
 > The `str` type, also called a ‘string slice’, is the most primitive string type. It is usually seen in its borrowed form, `&str`. It is also the type of string literals, `&'static str`.
 > 
 > String slices are **always** valid UTF-8.
 
-</v-click>
+</div>
+
+<!--
+
+Notes:
+- str's can never actually be constructed directly
+- &str could point to many different places, but it'll always implement the str primitives
+- AsRef<str> is one of the common interfaces, however Deref means you can just use &String for &str args.
+-->
 
 ---
 
@@ -66,13 +62,11 @@ Incorrect: `String`, `&str`
 >
 > A dynamically-sized view into a contiguous sequence, [T]. Contiguous here means that elements are laid out so that every element is the same distance from its neighbors.
 
-Ref: https://doc.rust-lang.org/std/primitive.slice.html
-
 <br />
 
 <v-click>
 
-If every element is the same distance from it's neighbour, then what is the `len` of the following?
+What is the output?
 
 ```rust
 fn main() {
@@ -84,19 +78,23 @@ fn main() {
 
 </v-click>
 
-<v-click>
+<v-clicks>
 
 ```rust
     //        ^^ 9
 ```
 
-</v-click>
+```rust
+println!("{:x?}", "İstanbul".as_bytes());   // [c4, b0, 73, 74, 61, 6e, 62, 75, 6c]
+```
 
-<v-click>
+</v-clicks>
 
-∴ A String slice (`str`) is just a slice of bytes (`[u8]`), which contents are always valid UTF-8.
+<footer>
 
-</v-click>
+Ref: https://doc.rust-lang.org/std/primitive.slice.html
+
+</footer>
 
 <!--
 &str is a slice of bytes, not of utf-8 characters. UTF-8 characters are between 1-4 bytes, so:
@@ -109,18 +107,25 @@ Therefore string slices are slices of bytes
 layout: center
 ---
 
+## A String slice (`str`) is just a slice of bytes (`[u8]`), **which contents are always valid UTF-8**.
+
+---
+layout: center
+---
+
 ## Lets make some strings
 
 ---
 
-## Using strings in Rust
+## Creating strings
 
 > String slices are **always** valid UTF-8.
 
 ∴ The compiler won't compile your rust if you try to do non UTF-8 things in `&str`
 
-```rs
+```rust
 fn main() {
+    // ASCII chars are always safe!
     let s = "Hello World";     // Good
     let s = "Hello\x20World";  // Also good
     let s = "Hello\x7FWorld";  // Also good (\x7F is the control character `DEL`)
@@ -128,6 +133,22 @@ fn main() {
     //            ^^^^ must be a character in the range [\x00-\x7f]
 }
 ```
+
+<v-click>
+
+... and for completeness...
+
+```rust
+fn main() {
+    let s = "Hello\u{0020}World";   // Good
+    let s = "Hello\u{1F63B}World";   // Good
+    let s = "Hello\u{110000}World";  // Fails
+    //            ^^^^^^^^^^ invalid escape
+}
+
+```
+
+</v-click>
 
 <!--
 \x7F is DEL, so it seems as though the character is added then removed :shrug:
@@ -137,18 +158,65 @@ fn main() {
 
 ## Creating Strings
 
-Remember, all strings are just arrays of bytes. As such, rust will also let us create strings from exactly that, vectors of bytes.
+Remember, all strings are just a sequence of bytes. As such, rust will also let us create strings from exactly that, vectors of bytes.
 
 ```rust
 fn main() {
-    let v = vec![0x52, 0x75, 0x73, 0x74, 0x21];
+    let cat: [u8; 4] = [0xF0, 0x9F, 0x98, 0xBB];
 
-    // Panics if not a valid UTF-8 string
-    let s = String::from_utf8(v).unwrap();
+    let s = std::str::from_utf8(&cat).unwrap();
+    // let s = String::from_utf8(cat.to_vec()).unwrap();
 
     println!("{s}");
+    //        ^^^ 😻 
 }
 ```
+
+<v-click>
+
+... and we can create byte sequences from strings even! (thanks compiler!)
+
+```rust
+fn main() {
+    let s = b"Hello World!";
+
+    assert_eq!(s, &[72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100, 33]);  // passes
+}
+``` 
+
+</v-click>
+
+---
+
+## Creating strings
+
+Even `char` primitives!
+
+```rust {0-7,10,13-16|all}
+fn main() {
+    let s: [char; 4] = [
+        '\u{0048}',
+        char::from_u32(0x69).unwrap(),
+        unsafe { char::from_u32_unchecked(0x20) },
+        '\u{1F63B}'
+    ];
+    println!("{}", s.len() * std::mem::size_of::<char>());  // 16
+    
+    let t: String = s.iter().collect();
+    println!("{}", t.len() * std::mem::size_of::<u8>());    // 7
+
+    println!("{t}");
+    //        ^^^ "Hi 😻"
+}
+```
+
+👆 Yes, `.iter().collect();`
+
+---
+layout: center
+---
+
+## See, creating strings is easy!
 
 ---
 
@@ -158,19 +226,48 @@ Until it panics.
 
 ```rust
 fn main() {
-    let v = vec![0x80];
+    let cat: [u8; 4] = [0xF0, 0x9F, 0x98, 0xBB];
 
     // Panics
-    let s = String::from_utf8(v).unwrap();
-    // thread 'main' panicked at 'called `Result::unwrap()` on an `Err` value: FromUtf8Error { bytes: [128], error: Utf8Error { valid_up_to: 0, error_len: Some(1) } }', src/main.rs:5:35
+    let s = std::str::from_utf8(&cat[0..2]).unwrap();
+    // thread 'main' panicked at 'called `Result::unwrap()` on an `Err` value:
+    //   FromUtf8Error { bytes: [128], error: Utf8Error { valid_up_to: 0, error_len: Some(1) } }', src/main.rs:5:35
 }
 ```
 
+<p v-click class="pt-10">
+
+> String slices are **always** valid UTF-8.
+
+😬 Yeah, not all sequencess of bytes are "Valid UTF-8"
+
+</p>
+
 ---
 
-## Conventially UTF-8 vs. Gaurantee
+## Invalid UTF-8
 
-With the help of bstr crate
+...We didn't talk about Invalid UTF-8 yet
+
+<v-click>
+
+- First byte of UTF-8 byte sequences
+  - 1 byte seq: `0xxxxxxx`
+  - 2 byte seq: `110xxxxx` - `0xCx` or `0xDx` = 2 bytes 
+  - 3 byte seq: `1110xxxx` - `0xEx` = 3 bytes
+  - 4 byte seq: `11110xxx` - `0xFx` = 4 bytes
+
+</v-click>
+
+<v-click>
+
+- ∴ The following are "broken":
+  - `[0xA0]`, `[0xB0]` - invalid sequences
+  - `[0xC0]`, `[0xD0]` - missing second byte
+  - `[0xE0, 0xFF]` - missing third byte
+  - `[0xF0, 0xFF, 0xFF]` - missing fourth byte
+
+</v-click>
 
 ---
 layout: center
@@ -195,6 +292,12 @@ layout: center
 ## `unsafe` is unsafe
 
 - Breaking `&str`s (pushing non utf8 bytes)
+
+---
+
+## Conventially UTF-8 vs. Gaurantee
+
+With the help of bstr crate
 
 ---
 layout: center
