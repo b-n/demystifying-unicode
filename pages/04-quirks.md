@@ -6,6 +6,36 @@ layout: cover
 
 ---
 
+## Can we just know which UTF Encoding by looking at the bytes?
+
+```rust {all|1-2,23|1-6,23|1-2,8-15,23|1-2,17-23}
+fn main() {
+    let s = b"\x00\x10\xCA\x9C\x00\x10\xC9\x98\x00\x10\xC9\xAD\x00\x10\xC9\xAD\x00\x10\xCA\x98";
+    
+    // UTF-8 decode
+    let utf8_s = std::str::from_utf8(s).unwrap();
+    println!(" UTF-8: {utf8_s}");
+    
+    // UTF-16 decode
+    let utf16: Vec<u16> = s.chunks(2)
+        .map(|c| (c[0] as u16) << 8 | (c[1] as u16))
+        .collect();
+    let utf16_s = char::decode_utf16(utf16)
+        .map(|r| r.unwrap_or(char::REPLACEMENT_CHARACTER))
+        .collect::<String>();
+    println!("UTF-16: {utf16_s}");
+    
+    // UTF-32 decode
+    let utf32_s: String = s.chunks(4)
+        .map(|c| (c[0] as u32) << 24 | (c[1] as u32) << 16 | (c[2] as u32) << 8 | (c[3] as u32))
+        .map(|c| char::from_u32(c).unwrap())
+        .collect();
+    println!("UTF-32: {}", utf32_s);
+}
+```
+
+---
+
 ## Capitalization (AKA Casemapping and Casefolding)
 
 All ASCII letters just so happen to be lossless when transitioning between upper and lower case versions. But this doesn't apply to all languages and characters.
