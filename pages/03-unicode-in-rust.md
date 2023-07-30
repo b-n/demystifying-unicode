@@ -280,15 +280,100 @@ layout: center
 
 ---
 
-## Reading and Writing files
+## Reading and Writing
 
-- Binary "strings" (e.g. reading/writing from disk)
+```rust {5|6|0-4,6-12,14|0-4,6-14}
+// Needed for `impl Read for &[u8]`
+use std::io::prelude::*;
+
+fn main() {
+    //let mut file = std::fs::File::open("ref/plain_text.txt").unwrap();
+    let mut file: &[u8] = b"Plain\x80 Text!";
+
+    let mut buf: Vec<u8> = vec![];
+
+    let bytes_read = file.read_to_end(&mut buf).unwrap();
+
+    println!("{bytes_read}, {buf:02X?}");
+    //        ^^^^^^^^^^^^^^^^^^^^^^^^ 12, [50, 6C, 61, 69, 6E, 80, 20, 54, 65, 78, 74, 21]
+}
+```
+
+<v-click>
+
+Nothing bad... so far...
+
+</v-click>
 
 ---
 
-## Standards - and why we follow them
+## Reading and Writing
 
-- JSON, but it's binary blobs as values
+```rust {6,10-11|6,10-13}
+// Needed for `impl Read for &[u8]`
+use std::io::prelude::*;
+
+fn main() {
+    //let mut file = std::fs::File::open("ref/plain_text.txt").unwrap();
+    let mut file: &[u8] = b"Plain\x80 Text!";
+
+    let mut buf: String = String::new();
+
+    //let bytes_read = file.read_to_end(&mut buf).unwrap();
+    let bytes_read = file.read_to_string(&mut buf).unwrap();
+    // thread 'main' panicked at 'called `Result::unwrap()` on an `Err` value:
+    //     Error { kind: InvalidData, message: "stream did not contain valid UTF-8" }', src/main.rs:11:52
+
+    println!("{bytes_read}, {buf:02X?}");
+}
+```
+
+---
+
+## Read and Writing - JSON
+
+```json
+{
+  "hello": "world\x80!"
+}
+```
+
+<v-click>
+
+```rust {all|1-4,7-9|1-4,11|1-4,13|all}
+#[derive(Debug, serde::Deserialize)]
+struct Greeting {
+    pub who: String
+}
+
+fn main() {
+    let raw: &[u8] = b"{\"who\": \"world\x80\"}";
+    // for illustrative purposes
+    let s: &str = unsafe { std::str::from_utf8_unchecked(raw) };
+    
+    let greeting: Greeting = serde_json::from_str(s).unwrap();
+    
+    println!("Hello {}!", greeting.who);
+}
+```
+
+</v-click>
+
+<div v-click class="mt-7">
+
+> JSON text exchanged between systems that are not part of a closed ecosystem MUST be encoded using UTF-8
+
+</div>
+
+<footer>
+
+Ref: https://datatracker.ietf.org/doc/html/rfc8259#section-8.1
+
+</footer>
+
+<!--
+The execution never completes, and outputs "Hello world", but not the exclamation mark.
+-->
 
 ---
 

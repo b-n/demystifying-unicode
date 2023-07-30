@@ -13,4 +13,12 @@ path = "src/super_secret.rs"
 name = "scratch"
 path = "src/scratch.rs"
 
+[[bin]]
+name = "file_read"
+path = "src/file_read.rs"
+
+[[bin]]
+name = "file_write"
+path = "src/file_write.rs"
+
 [dependencies]
