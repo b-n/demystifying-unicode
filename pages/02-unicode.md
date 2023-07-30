@@ -47,13 +47,13 @@ layout: center
 
 ## Unicode to the resque
 
-<v-clicks>
+<v-click>
 
 - Universal
 - Efficient
 - Unambiguous
 
-</v-clicks>
+</v-click>
 
 <!--
 - Universal: Encompass all characters that can be used in general text interchange
@@ -398,9 +398,12 @@ layout: center
 
 <v-clicks>
 
-- Unicode is a standard. It defeines a dictionary of `codepoints` to their character descriptions
-- UTF-8 is an Encoding - defined by the Unicode Standard.
-- Encodings help humans interpret bytes as painted glyphs
-- UTF-8 is by far the most common standard due to it's memory efficiency (e.g. variable space) 
+Unicode is a standard. It defeines a dictionary of `codepoints` to their character descriptions
+
+UTF-8 is an Encoding - defined by the Unicode Standard.
+
+Encodings help humans interpret bytes as painted glyphs
+
+UTF-8 is by far the most common standard due to it's memory efficiency (e.g. variable space) 
 
 </v-clicks>

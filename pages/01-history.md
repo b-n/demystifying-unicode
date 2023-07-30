@@ -250,13 +250,16 @@ DIN 91379: https://github.com/String-Latin/DIN-91379-Characters-and-Sequences
 layout: center
 ---
 
-## Summary:
+## Summary
 
 <v-clicks>
 
-- Computers know bits - `1`s and `0`s
-- Bits are not human structures - so we abstract
-- `char` isn't a character, it's just a `uint8_t` with a fancy name
-- We need a whole lot more bits if we more than just names and dates in europe
+Computers know bits - `1`s and `0`s
+
+Bits are not human structures - so we abstract
+
+`char` isn't a character, it's just a `uint8_t` with a fancy name
+
+We need a whole lot more bits if we more than just names and dates in europe
 
 </v-clicks>
