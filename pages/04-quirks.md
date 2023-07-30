@@ -40,6 +40,12 @@ layout: center
 
 <div class="output">
 
+<p class="text-xl width-100 text-center">
+
+**No**
+
+</p>
+
 ```
  UTF-8: ʜɘɭɭʘ
 UTF-16: 쪖즘즭즭쪘
@@ -50,7 +56,7 @@ UTF-32: 􌪜􌦘􌦭􌦭􌪘
 
 <v-click>
 
-<Arrow x1="700" y1="450" x2="630" y2="300" width="5"/>
+<Arrow x1="700" y1="450" x2="600" y2="320" width="3"/>
 
 <div class="text-3xl absolute top-115 left-150">"I gained weight" 🤷</div>
 
@@ -58,8 +64,8 @@ UTF-32: 􌪜􌦘􌦭􌦭􌪘
 
 <style>
 .output code {
-  font-size: 2rem;
-  line-height: 3rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 </style>
 
