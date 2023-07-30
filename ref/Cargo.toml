@@ -21,4 +21,9 @@ path = "src/file_read.rs"
 name = "file_write"
 path = "src/file_write.rs"
 
+[[bin]]
+name = "bstr"
+path = "src/bstr.rs"
+
 [dependencies]
+bstr = '1.6.0'

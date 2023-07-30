@@ -8,10 +8,6 @@ layout: cover
 
 We now know what Unicode and UTF-8 are, how is it used in rust?
 
-- Limits of UTF-8 default
-  - Reading binary from disk
-  - People not following standards (binary in json without conversion) 
-  - We can break a string `unsafe {}`
 -->
 
 ---
@@ -373,25 +369,60 @@ Ref: https://datatracker.ietf.org/doc/html/rfc8259#section-8.1
 
 <!--
 The execution never completes, and outputs "Hello world", but not the exclamation mark.
+
+unsafe could be burried in dependencies - it shouldn't be, but it could be.
 -->
 
 ---
 
-## `unsafe` is unsafe
+## Conventially UTF-8 vs. Gauranteed
 
-- Breaking `&str`s (pushing non utf8 bytes)
+Sometimes you just want cats:
 
----
+```rust
+use bstr::ByteSlice;
 
-## Conventially UTF-8 vs. Gaurantee
+fn main() {
+    let raw: &[u8] =
+        b"\x80\x90\xF0\x9F\x99\x84Pl\xF0\x9F\x98\xBBain\xF0\x9F\x98\xBEText!\x80\x80\x80";
 
-With the help of bstr crate
+    let cats: String = raw
+        .chars()
+        .filter(|c| ('\u{1F638}'..'\u{1F640}').contains(c))
+        .collect();
+
+    println!("Cats: {}", cats);
+    // Cats: 😻😾
+}
+```
+
+<v-click>
+
+<Arrow x1="220" y1="150" x2="190" y2="210" class="color-red"/>
+<Arrow x1="250" y1="150" x2="220" y2="210" class="color-red"/>
+<Arrow x1="700" y1="150" x2="670" y2="210" class="color-red"/>
+<Arrow x1="725" y1="150" x2="695" y2="210" class="color-red"/>
+<Arrow x1="750" y1="150" x2="720" y2="210" class="color-red"/>
+
+</v-click>
+
+<v-click>
+
+`bstr` crate - #182 on crates.io
+
+> The primary motivation for byte strings is for handling arbitrary bytes that are mostly UTF-8.
+
+Ref: https://crates.io/crates/bstr
+
+</v-click>
 
 ---
 layout: center
 ---
 
 ## Summary
+
+<v-clicks>
 
 `str` is the primitive string - a slice of bytes with gaurantees of UTF-8
 
@@ -400,3 +431,5 @@ layout: center
 `UTF8Error` is because you should be handling bytes instead of strings
 
 `bstr` if you want Conventially UTF-8 instead
+
+</v-clicks>
