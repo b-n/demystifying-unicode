@@ -35,6 +35,35 @@ fn main() {
 ```
 
 ---
+layout: center
+---
+
+<div class="output">
+
+```
+ UTF-8: ʜɘɭɭʘ
+UTF-16: 쪖즘즭즭쪘
+UTF-32: 􌪜􌦘􌦭􌦭􌪘
+```
+
+</div>
+
+<v-click>
+
+<Arrow x1="700" y1="450" x2="630" y2="300" width="5"/>
+
+<div class="text-3xl absolute top-115 left-150">"I gained weight" 🤷</div>
+
+</v-click>
+
+<style>
+.output code {
+  font-size: 2rem;
+  line-height: 3rem;
+}
+</style>
+
+---
 
 ## Capitalization (AKA Casemapping and Casefolding)
 
