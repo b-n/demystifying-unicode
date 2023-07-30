@@ -158,7 +158,8 @@ fn main() {
 
 ## Creating Strings
 
-Remember, all strings are just a sequence of bytes. As such, rust will also let us create strings from exactly that, vectors of bytes.
+- All strings are a sequence of bytes
+- ∴ Rust let's us create strings from slices/vectors of bytes.
 
 ```rust
 fn main() {
@@ -192,10 +193,10 @@ fn main() {
 
 Even `char` primitives!
 
-```rust {0-7,10,13-16|all}
+```rust {0-7,10,13-16|8,11}
 fn main() {
     let s: [char; 4] = [
-        '\u{0048}',
+        'H',
         char::from_u32(0x69).unwrap(),
         unsafe { char::from_u32_unchecked(0x20) },
         '\u{1F63B}'
@@ -228,8 +229,10 @@ Until it panics.
 fn main() {
     let cat: [u8; 4] = [0xF0, 0x9F, 0x98, 0xBB];
 
+    let sliced = &cat[0..=2];
+
     // Panics
-    let s = std::str::from_utf8(&cat[0..2]).unwrap();
+    let _s = std::str::from_utf8(sliced).unwrap();
     // thread 'main' panicked at 'called `Result::unwrap()` on an `Err` value:
     //   FromUtf8Error { bytes: [128], error: Utf8Error { valid_up_to: 0, error_len: Some(1) } }', src/main.rs:5:35
 }
@@ -262,7 +265,7 @@ fn main() {
 <v-click>
 
 - ∴ The following are "broken":
-  - `[0xA0]`, `[0xB0]` - invalid sequences
+  - `[0x80]`, `[0x90]`, `[0xA0]`, `[0xB0]` - invalid UTF-8 sequences
   - `[0xC0]`, `[0xD0]` - missing second byte
   - `[0xE0, 0xFF]` - missing third byte
   - `[0xF0, 0xFF, 0xFF]` - missing fourth byte
