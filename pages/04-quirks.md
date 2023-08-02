@@ -221,6 +221,55 @@ ZJW: zwidje https://unicode.org/emoji/charts/emoji-zwj-sequences.html
 
 ---
 
+## Emoji Composition
+
+What happens if we combine:
+
+<v-clicks>
+
+- `\u1F468` - Man
+- `\u1F3FB` - Fitzpatrick type-2
+- `\u200D` - Zwidge
+- `\u2764` - Heavy black heart
+- `\uFE0F` - Variant selector-16
+- `\u200D` - Zwidge
+- `\u1F468` - Man
+- `\u1F3FD` - Fitzpatrick type-4
+
+</v-clicks>
+
+<div v-click class="codepoint absolute top-30 right-30">
+  <div class="glyph">👨🏻‍❤️‍👨🏽 </div>
+  <div class="code">U+1F468 + U+1F3Fb +<br />U+200D + U+2764 +<br />U+FE0F + U+200D +<br/>U+1F468 + U+1F3FD</div>
+</div>
+
+<div v-click class="border border-thin px-10 w-73 mt-5">
+
+4 + 4 + 3 + 3 + 3 + 3 + 4 + 4 = 28 bytes!
+
+</div>
+
+---
+
+## Emoji Composition
+
+"Fun" combinations:
+
+<v-clicks>
+
+- `\u1F9D4` + `\u200D` + `\u2640` + `\uFE0F` = 🧔‍♀️ = Person Beard + ♀
+- `\u1F9D1` + `\u200D` + `\u1F9b2` = 🧑‍🦲 = Adult + Bald
+- `\u1F9D1` + `\u200D` + `\u2695` = 🧑‍⚕ = Adult + ⚕ (Staff of aesculapius)
+- `\u1F9D1` + `\u200D` + `\u1F373` = 🧑‍🍳 = Adult + 🍳 (Cooking)
+- `\u1F468` + `\u1F3FB` + `\u200D` + `\u1F9BD` = 👨🏻‍🦽 = Man + Fitzpatrick 1-2 + Manual wheelchair 
+- `\u1F469` + `\u1F3FF` + `\u200D` + `\u1F373` = 👩🏿‍🎤 = Woman + Fitzpatrick Type-6 + Microphone 
+- `\u1F3F3` + `\uFE0F` + `\u200D` + `\u1F308` = 🏳️ + 🌈 = 🏳️‍🌈 
+- `\u1F3F3` + `\uFE0F` + `\u200D` + `\u26A7` + `u\FE0F` = 🏳️ + ⚧️ = 🏳️‍⚧️  
+
+</v-clicks>
+
+---
+
 ## Digraphs/ligatures
 
 Digraphs and ligatures are both made by combining two glyphs:
