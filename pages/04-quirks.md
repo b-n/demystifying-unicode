@@ -71,13 +71,97 @@ UTF-32: 􌪜􌦘􌦭􌦭􌪘
 
 ---
 
-## Capitalization (AKA Casemapping and Casefolding)
+## Streets!
 
-All ASCII letters just so happen to be lossless when transitioning between upper and lower case versions. But this doesn't apply to all languages and characters.
+Straße!
 
-Capitalization - "\u0131" == "\u0131".upcase.downcase. "\u0131".upcase.downcase(:turkic)
+or...
 
-Fun fact: There are no RTL languages that have the concept of casing (Arabic, Hebrew, Persian, and more...)
+```rust
+let s = "Straße";
+let upcase: String = s.to_uppercase();
+let downcase: String = s.to_lowercase();
+```
+
+<v-click>
+
+Questions:
+
+- What does `upcase` contain?
+- What does `downcase` contain?
+- Why do we get `Strings` back?
+
+</v-click>
+
+<div v-click class="absolute top-75 left-90 list-circle">
+
+- `STRASSE`
+- `strasse`
+
+</div>
+
+<div v-click class="mt-5">
+
+```rust
+pub fn make_ascii_lowercase(&mut self);
+
+pub fn to_lowercase(&self) -> String;
+```
+
+</div>
+
+---
+
+## Casemapping!
+
+> If it works in Turkey, it probably works everywhere
+
+`Istanbul` or `İstanbul`
+
+<div v-click class="flex flex-items-center flex-justify-center w-a">
+  <div class="codepoint">
+    <div class="glyph">İ</div>
+    <div class="code">U+0130</div>
+  </div>
+  <div class="inline-block mx-10 text-center">
+  <div class="text-10">⇛</div>
+  <div>
+
+  `to_lowercase()`
+
+  </div>
+  </div>
+  <div class="codepoint">
+    <div class="glyph">i</div>
+    <div class="code">U+0069</div>
+  </div>
+</div>
+
+<div v-click class="flex flex-items-center flex-justify-center w-a">
+  <div class="codepoint">
+    <div class="glyph">i</div>
+    <div class="code">U+0069</div>
+  </div>
+  <div class="inline-block mx-10 text-center">
+  <div class="text-10">⇛</div>
+  <div>
+
+  `to_uppercase()`
+
+  </div>
+  </div>
+  <div class="codepoint">
+    <div class="glyph">I</div>
+    <div class="code">U+0049</div>
+  </div>
+</div>
+
+<footer>
+
+Special Casing: https://www.unicode.org/Public/UCD/latest/ucd/SpecialCasing.txt<br />
+And an issue: https://github.com/rust-lang/rust/issues/72966
+
+</footer>
 
 ---
 
@@ -86,22 +170,35 @@ Fun fact: There are no RTL languages that have the concept of casing (Arabic, He
 A[cute] E
 
 - é = `\u00e9`
-- é = `\u0065\u0301` (just an `e` but with special `\u0301` combining)
+- é = `\u0065\u0301` (`e` + combining `´`)
 
-```
-é != é
-```
+<div v-click>
 
-`\u003d\u0338\u003d` vs. `\u2260` vs. `!=`
-
-```
-'≠=' != '≠' != '!='
+```rust
+// assert_ne!('é', 'é');
+   assert_ne!("é", "é");
 ```
 
-Not not equal
+</div>
+
+<v-click>
+
+```rust
+use unicode_normalization::UnicodeNormalization;
+
+fn main() {
+    let u00e9 = "\u{00e9}";
+    let u0065_u0301 = "\u{0065}\u{0301}";
+    
+    assert_ne!(u00e9, u0065_u0301);
+    assert_eq!(
+        u00e9.nfc().collect::<String>(),
+        u0065_u0301.nfc().collect::<String>()
+    );
+}
 ```
-=⃥
-```
+
+</v-click>
 
 <footer>
 

@@ -36,3 +36,23 @@ UTF-32 == UTF-32
 The encoding standard is the encoding standard. If people are implementing UTF-8 in different ways (e.g. reverse byte order), then they are not using UTF-8, they have their own special thing.
 -->
 
+---
+
+## Composition
+
+`\u003d\u0338\u003d` vs. `\u2260` vs. `!=`
+
+```
+'≠=' != '≠' != '!='
+```
+
+<v-click>
+
+Not not equal
+
+```
+=⃥
+```
+
+</v-click>
+
