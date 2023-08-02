@@ -104,7 +104,7 @@ Therefore string slices are slices of bytes
 layout: center
 ---
 
-## A String slice (`str`) is just a slice of bytes (`[u8]`), **which contents are always valid UTF-8**.
+## A String slice (`str`) is just a slice of bytes (`[u8]`), **whose contents are always valid UTF-8**.
 
 ---
 layout: center

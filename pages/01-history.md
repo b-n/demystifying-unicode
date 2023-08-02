@@ -25,7 +25,7 @@ Those structures are inherently computer orientated - not human orientated:
 - 8 bits makes a byte
 - 4/8 bytes makes a word on 32/64 bit architectures respectively
   
-  <sup>(last you'll heard of "words" in this presentation)</sup>
+  <sup>(last time you'll heard of "words" in this presentation)</sup>
 
 </v-clicks>
 
@@ -261,6 +261,6 @@ Bits are not human structures - so we abstract
 
 `char` isn't a character, it's just a `uint8_t` with a fancy name
 
-We need a whole lot more bits if we more than just names and dates in europe
+We need a whole lot more bits if we want more than just names and dates in europe
 
 </v-clicks>
