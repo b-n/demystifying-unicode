@@ -17,16 +17,17 @@ footer {
 }
 
 .codepoint {
-  position: absolute;
-  margin-top: 1rem;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
 }
 
 .codepoint .glyph {
   font-size: 5rem; 
+  line-height: 6rem;
+  width: 100%;
+  text-align: center;
 }
 
 .codepoint .code {
