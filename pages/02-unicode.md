@@ -105,19 +105,15 @@ layout: center
 <img src="/no_chars_yes_glyphs.jpg" alt="Drake no: characters. Drake yes: glyphs" />
 
 ---
-layout: two-cols
----
 
 ## Glyphemes
 
-<div class="codepoint">
+<div class="codepoint absolute top-50 left-50">
   <div class="glyph">é</div>
   <div class="code">U+00e9</div>
 </div>
 
-::right::
-
-<div class="codepoint">
+<div class="codepoint absolute top-50 right-50">
   <div class="glyph">é</div>
   <div class="code">U+0065 + U+0301</div>
 </div>
