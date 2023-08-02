@@ -56,3 +56,37 @@ Not not equal
 
 </v-click>
 
+---
+
+## Digraphs/ligatures
+
+Digraphs and ligatures are both made by combining two glyphs:
+
+- In a digraph, the glyphs remain separate but are placed close together.
+- In a ligature, the glyphs are fused into a single glyph.
+
+Generally speaking, Unicode doesn't like dealing with this problem.
+
+> The Unicode Standard is a character encoding standard, and is **not intended to standardize ligatures or other presentation forms**, or any other aspects of the details of font and glyph design. The ligatures which you can find in the Unicode Standard are **compatibility encodings** only—and are not meant to set a precedent requiring the encoding of all ligatures as characters.
+
+TL;DR; you shouldn't expect any ligatures/digraphs to be added to Unicode any time soon.
+
+<!--
+http://unicode.org/faq/ligature_digraph.html
+-->
+
+---
+
+## Flags
+
+- Who adds a new flag?
+- Flag sequences
+  - :RGI_Emoji_Flag_Sequence
+  - https://unicode.org/reports/tr51/#Flags
+  - Qatar flag = wideboi
+
+- "🇭🇪🇱🇱🇴🇼🇴🇷🇱🇩" ??
+
+Flag types:
+- country/region
+- local (gbeng, etc)
