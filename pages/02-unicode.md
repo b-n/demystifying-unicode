@@ -11,7 +11,7 @@ background: /DSC09097.jpg
 
 <v-clicks>
 
-1. Codepages/charmaps? System dependant
+1. Codepages/charmaps? System dependent
 1. Unique characters? Duplication everywhere
 1. Display more than one codepage/charmap at a time? ␎␏␎␏␎␏␎␏
 1. Text from outside of Europe? :ha:
@@ -58,7 +58,7 @@ layout: center
 
 <!--
 - Universal: Encompass all characters that can be used in general text interchange
-- Efficient: Simple to store and parse. Fixed character codes for all the charaters, no switch code pages/charmaps.
+- Efficient: Simple to store and parse. Fixed character codes for all the characters, no switch code pages/charmaps.
 - Unambiguous: `\1F600` is a grinning face - everywhere.
 
 Ref: https://www.unicode.org/versions/Unicode15.0.0/ch01.pdf
@@ -258,7 +258,7 @@ Key points:
 
 <!--
 UTF-8 is generally speaking more efficient when dealing with "Latin" based web - Best case 1 byte, worst case, 2 bytes.
-UTF-16 is gauranteed to be 2 bytes, if not 4
+UTF-16 is guaranteed to be 2 bytes, if not 4
 UTF-32 will always be 4 bytes.
 -->
 
@@ -395,7 +395,7 @@ layout: center
 
 <v-clicks>
 
-Unicode is a standard. It defeines a dictionary of `codepoints` to their character descriptions
+Unicode is a standard. It defines a dictionary of `codepoints` to their character descriptions
 
 UTF-8 is an Encoding - defined by the Unicode Standard.
 
