@@ -278,31 +278,49 @@ fn main() {
     let encoded = "Hello󠀠󠁒󠁵󠁳󠁴 Meetup Amsterdam!";
 
     println!("{}", encoded);
-    //println!("{:?}", encoded);
 
-    //let codepoints: Vec<u32> = encoded.chars().map(|c| c.into()).collect();
-    //println!("{:X?}", codepoints);
+    let codepoints: Vec<u32> = encoded.chars().map(|c| c.into()).collect();
+    println!("{:X?}", codepoints);
 
-    //let offset: u32 = 0xE0000;
+    let decoded: String = encoded
+        .chars()
+        .map(|c| match c {
+            '\u{e0000}'..='\u{e007F}' => {
+                let char_u32: u32 = c.into();
+                std::char::from_u32(char_u32 - 0xE0000).unwrap()
+            },
+            _ => c,
+        })
+        .collect();
 
-    //let decoded: String = encoded
-    //    .chars()
-    //    .map(|c| match c {
-    //        '\u{e0000}'..='\u{e007F}' => {
-    //            let char_u32: u32 = c.into();
-    //            std::char::from_u32(char_u32 - offset).unwrap()
-    //        },
-    //        _ => c,
-    //    })
-    //    .collect();
-
-    //println!("{:?}", decoded);
+    println!("{}", decoded);
 }
 ```
 
 https://www.compart.com/en/unicode/block/U+E0000
 
+https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=43728a2dea045f7f0c9519231c32555c
+
 <!--
 Unicode tags: https://en.wikipedia.org/wiki/Tags_(Unicode_block)
 \uE0001-\uE007F
 -->
+
+---
+layout: center
+---
+
+## Summary
+
+<v-clicks>
+
+Encoding is important! 
+
+Casemapping is hard! (Turkish = Web hard mode)
+
+Composition is pretty dang cool
+
+Obsfucated code = dangerous‽
+
+</v-clicks>
+
