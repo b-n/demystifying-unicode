@@ -1,5 +1,6 @@
 ---
 layout: cover
+background: /DSC09320.jpg
 ---
 
 # Quirks

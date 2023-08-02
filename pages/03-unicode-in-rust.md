@@ -1,5 +1,6 @@
 ---
 layout: cover
+background: /DSC09353.jpg
 ---
 
 # Unicode in Rust

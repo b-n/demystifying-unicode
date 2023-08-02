@@ -1,5 +1,6 @@
 ---
 layout: cover
+background: /DSC09284.jpg
 ---
 
 # History
