@@ -7,7 +7,7 @@ background: /DSC09284.jpg
 
 ---
 
-## A bit (🥁鈸) of fundamentals
+## A bit (🥁咚隆咚隆) of fundamentals
 
 <div class="mt-5">
 
