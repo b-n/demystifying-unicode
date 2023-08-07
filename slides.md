@@ -62,6 +62,8 @@ background: /DSC09297.jpg
 
 <div class="absolute bottom-0 left-0 p-5 text-left">
 
+Me: https://bennaylor.dev
+
 Github: https://github.com/b-n
 
 Mastodon: https://techhub.social/@b_n
