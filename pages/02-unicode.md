@@ -11,16 +11,16 @@ background: /DSC09097.jpg
 
 <v-clicks>
 
-1. Codepages/charmaps? System dependent
+1. Code pages/charmaps? System dependent
 1. Unique characters? Duplication everywhere
-1. Display more than one codepage/charmap at a time? ␎␏␎␏␎␏␎␏
+1. Display more than one code page/charmap at a time? ␎␏␎␏␎␏␎␏
 1. Text from outside of Europe? :ha:
 
 </v-clicks>
 
 <!--
 TODO: Illustrate with an example:
-- Write an application on one computer, relying on codepage X
+- Write an application on one computer, relying on code page X
 - Send data to another computer
 - Get garbled nonsense
 - 👍 
@@ -46,7 +46,7 @@ layout: center
 layout: center
 ---
 
-## Unicode to the resque
+## Unicode to the rescue
 
 <v-click>
 

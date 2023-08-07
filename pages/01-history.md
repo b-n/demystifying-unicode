@@ -219,7 +219,7 @@ IBM437: https://www.compart.com/en/unicode/charsets/IBM437
 
 ---
 
-## How many characters is enough characters?
+## How many characters is enough?
 
 <p class="pt-5">
 
@@ -230,7 +230,7 @@ IBM437: https://www.compart.com/en/unicode/charsets/IBM437
 | | |
 | --- | --- |
 | Base Latin Letters: 649 | enl: 42 |
-| Combinging Diacritics: 19 | bnlreq: 17 |
+| Combining Diacritics: 19 | bnlreq: 17 |
 | Greek Letters: 68 | bnl: 59 |
 | Cyrillic Letters: 61 | bnlopt: 8 |
 | | bnlnot: 2 |

@@ -113,7 +113,7 @@ pub fn to_lowercase(&self) -> String;
 
 ---
 
-## Casemapping!
+## Case mapping!
 
 > If it works in Turkey, it probably works everywhere
 
@@ -316,11 +316,11 @@ layout: center
 
 Encoding is important! 
 
-Casemapping is hard! (Turkish = Web hard mode)
+Case mapping is hard! (Turkish = Web hard mode)
 
 Composition is pretty dang cool
 
-Obsfucated code = dangerous‽
+Obfuscated code = dangerous‽
 
 </v-clicks>
 

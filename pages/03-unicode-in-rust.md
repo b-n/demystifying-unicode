@@ -57,7 +57,7 @@ Notes:
 
 > Primitive Type slice
 >
-> A dynamically-sized view into a contiguous sequence, [T]. Contiguous here means that elements are laid out so that every element is the same distance from its neighbors.
+> A dynamically-sized view into a contiguous sequence, [T]. Contiguous here means that elements are laid out so that every element is the same distance from its neighbours.
 
 <br />
 
@@ -218,7 +218,7 @@ layout: center
 
 ---
 
-## UTF8Error
+## UtF8Error
 
 Until it panics.
 
@@ -239,7 +239,7 @@ fn main() {
 
 > String slices are **always** valid UTF-8.
 
-😬 Yeah, not all sequencess of bytes are "Valid UTF-8"
+😬 Yeah, not all sequences of bytes are "Valid UTF-8"
 
 </p>
 
@@ -376,7 +376,7 @@ unsafe could be buried in dependencies - it shouldn't be, but it could be.
 
 ---
 
-## Conventially UTF-8 vs. Guaranteed
+## Conventionally UTF-8 vs. Guaranteed
 
 Sometimes you just want cats:
 
@@ -429,8 +429,8 @@ layout: center
 
 `str` is always `UTF-8`
 
-`UTF8Error` is because you should be handling bytes instead of strings
+`Utf8Error` is because you should be handling bytes instead of strings
 
-`bstr` if you want Conventially UTF-8 instead
+`bstr` if you want Conventionally UTF-8 instead
 
 </v-clicks>
