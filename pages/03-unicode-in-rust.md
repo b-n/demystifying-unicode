@@ -104,7 +104,7 @@ Therefore string slices are slices of bytes
 layout: center
 ---
 
-## A String slice (`str`) is just a slice of bytes (`[u8]`), **which contents are always valid UTF-8**.
+## A String slice (`str`) is just a slice of bytes (`[u8]`), **whose contents are always valid UTF-8**.
 
 ---
 layout: center
@@ -371,12 +371,12 @@ Ref: https://datatracker.ietf.org/doc/html/rfc8259#section-8.1
 <!--
 The execution never completes, and outputs "Hello world", but not the exclamation mark.
 
-unsafe could be burried in dependencies - it shouldn't be, but it could be.
+unsafe could be buried in dependencies - it shouldn't be, but it could be.
 -->
 
 ---
 
-## Conventially UTF-8 vs. Gauranteed
+## Conventially UTF-8 vs. Guaranteed
 
 Sometimes you just want cats:
 
@@ -425,7 +425,7 @@ layout: center
 
 <v-clicks>
 
-`str` is the primitive string - a slice of bytes with gaurantees of UTF-8
+`str` is the primitive string - a slice of bytes with guarantees of UTF-8
 
 `str` is always `UTF-8`
 

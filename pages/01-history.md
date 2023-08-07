@@ -7,7 +7,7 @@ background: /DSC09284.jpg
 
 ---
 
-## A bit (🥁鈸) of fundamentals
+## A bit (🥁咚隆咚隆) of fundamentals
 
 <div class="mt-5">
 
@@ -25,13 +25,13 @@ Those structures are inherently computer orientated - not human orientated:
 - 8 bits makes a byte
 - 4/8 bytes makes a word on 32/64 bit architectures respectively
   
-  <sup>(last you'll heard of "words" in this presentation)</sup>
+  <sup>(last time you'll heard of "words" in this presentation)</sup>
 
 </v-clicks>
 
 <!--
 
-👆 Although unimportant for this talk, these things are the main language of a computer, bits, bytes, words. Compilers compile our code, so we can make more __human__ structures. Often the compilers optimise our code for thigns the computer understands.
+👆 Although unimportant for this talk, these things are the main language of a computer, bits, bytes, words. Compilers compile our code, so we can make more __human__ structures. Often the compilers optimise our code for things the computer understands.
 
 -->
 
@@ -142,7 +142,7 @@ When we open up to interpretation as with a certain bit sequence meaning "H", th
 
 ## Competing standards
 
-- ~~ANSI (American National Standards Institue) Characters~~ Windows code pages, Code Page 437
+- ~~ANSI (American National Standards Institute) Characters~~ Windows code pages, Code Page 437
 - ASCII (American Standard Code for Information Interchange) Characters
 
 <div v-click class="mt-10">
@@ -155,7 +155,7 @@ When we open up to interpretation as with a certain bit sequence meaning "H", th
 ┃                                                                                     ┃ 
 ┃                    ┏━━━━━━━━━━━━━━━━━━┫ Prompt ┣━━━━━━━━━━━━━━━━┓                   ┃
 ┃                    ┃                                            ┃                   ┃ 
-┃                    ┃ DO YOU WANT YOUR LANGAUGE TO BE SUPPORTED? ┃                   ┃
+┃                    ┃ DO YOU WANT YOUR LANGUAGE TO BE SUPPORTED? ┃                   ┃
 ┃                    ┃                                            ┃                   ┃
 ┃                    ┗━━━━━━━━━━━━━━━━━━┫ No ┣━┫ >Nah not even< ┣━┛                   ┃
 ┃                                                                                     ┃ 
@@ -170,7 +170,7 @@ When we open up to interpretation as with a certain bit sequence meaning "H", th
 </div>
 
 <!--
-ANSI Characters aren't actually a thing. When people use this term, they are refering to the windows code pages.
+ANSI Characters aren't actually a thing. When people use this term, they are referring to the windows code pages.
 
 Quiz: How many bits is an ascii character?
 
@@ -219,7 +219,7 @@ IBM437: https://www.compart.com/en/unicode/charsets/IBM437
 
 ---
 
-## How many characters is enough charcters?
+## How many characters is enough characters?
 
 <p class="pt-5">
 
@@ -261,6 +261,6 @@ Bits are not human structures - so we abstract
 
 `char` isn't a character, it's just a `uint8_t` with a fancy name
 
-We need a whole lot more bits if we more than just names and dates in europe
+We need a whole lot more bits if we want more than just names and dates in europe
 
 </v-clicks>
