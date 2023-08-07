@@ -297,9 +297,12 @@ fn main() {
 }
 ```
 
-https://www.compart.com/en/unicode/block/U+E0000
+<footer>
 
+https://www.compart.com/en/unicode/block/U+E0000<br />
 https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=43728a2dea045f7f0c9519231c32555c
+
+</footer>
 
 <!--
 Unicode tags: https://en.wikipedia.org/wiki/Tags_(Unicode_block)
