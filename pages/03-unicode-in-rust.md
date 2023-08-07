@@ -375,49 +375,6 @@ unsafe could be buried in dependencies - it shouldn't be, but it could be.
 -->
 
 ---
-
-## Conventionally UTF-8 vs. Guaranteed
-
-Sometimes you just want cats:
-
-```rust
-use bstr::ByteSlice;
-
-fn main() {
-    let raw: &[u8] =
-        b"\x80\x90\xF0\x9F\x99\x84Pl\xF0\x9F\x98\xBBain\xF0\x9F\x98\xBEText!\x80\x80\x80";
-
-    let cats: String = raw
-        .chars()
-        .filter(|c| ('\u{1F638}'..'\u{1F640}').contains(c))
-        .collect();
-
-    println!("Cats: {}", cats);
-    // Cats: 😻😾
-}
-```
-
-<v-click>
-
-<Arrow x1="220" y1="150" x2="190" y2="210" class="color-red"/>
-<Arrow x1="250" y1="150" x2="220" y2="210" class="color-red"/>
-<Arrow x1="700" y1="150" x2="670" y2="210" class="color-red"/>
-<Arrow x1="725" y1="150" x2="695" y2="210" class="color-red"/>
-<Arrow x1="750" y1="150" x2="720" y2="210" class="color-red"/>
-
-</v-click>
-
-<v-click>
-
-`bstr` crate - #182 on crates.io
-
-> The primary motivation for byte strings is for handling arbitrary bytes that are mostly UTF-8.
-
-Ref: https://crates.io/crates/bstr
-
-</v-click>
-
----
 layout: center
 ---
 
@@ -430,7 +387,5 @@ layout: center
 `str` is always `UTF-8`
 
 `Utf8Error` is because you should be handling bytes instead of strings
-
-`bstr` if you want Conventionally UTF-8 instead
 
 </v-clicks>
